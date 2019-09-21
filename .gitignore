@@ -1,0 +1,8 @@
+/bin
+/dcu
+/src/**/_history
+/test/**/_history
+/**/*.exe
+/**/*.dproj
+/**/*.local
+/**/*.identcache

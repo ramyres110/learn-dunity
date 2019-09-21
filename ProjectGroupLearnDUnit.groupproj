@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{7A76987C-7E80-47B1-BEA0-3B8AC7C716E1}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="src\LearnDUnit.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="test\LearnDUnitTestProject.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="LearnDUnit">
+        <MSBuild Projects="src\LearnDUnit.dproj"/>
+    </Target>
+    <Target Name="LearnDUnit:Clean">
+        <MSBuild Projects="src\LearnDUnit.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="LearnDUnit:Make">
+        <MSBuild Projects="src\LearnDUnit.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="LearnDUnitTestProject">
+        <MSBuild Projects="test\LearnDUnitTestProject.dproj"/>
+    </Target>
+    <Target Name="LearnDUnitTestProject:Clean">
+        <MSBuild Projects="test\LearnDUnitTestProject.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="LearnDUnitTestProject:Make">
+        <MSBuild Projects="test\LearnDUnitTestProject.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="LearnDUnit;LearnDUnitTestProject"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="LearnDUnit:Clean;LearnDUnitTestProject:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="LearnDUnit:Make;LearnDUnitTestProject:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
